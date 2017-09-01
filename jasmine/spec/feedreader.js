@@ -38,7 +38,7 @@ $(function() {
                 var url = feed.url;
 
                 expect(url).toBeDefined();
-                expect(url).not.toBe('');
+                expect(url).toBeTruthy();
             });
         });
 
@@ -71,6 +71,8 @@ $(function() {
         it('is hidden by default', function() {
             var element = $("body");
             var isHidden = element.hasClass("menu-hidden");
+
+            expect(element).toBeDefined();
 
             expect(isHidden).toBe(true);
         });
@@ -112,10 +114,10 @@ $(function() {
         });
 
         it('contain at least one entry', function(done) {
-            var feed = $(".feed");
-            var entries = feed.children(".entry-link");
+            var entries = $(".feed .entry");
 
-            expect(entriest).toBeDefined();
+            expect(entries).toBeDefined();
+
             expect(entries.length).not.toBe(0);
             done();
         });
@@ -142,7 +144,7 @@ $(function() {
 
             expect(entry).toBeDefined();
             expect(newEntry).toBeDefined();
-            
+
             expect(newEntry).not.toBe(entry);
             done();
         });
