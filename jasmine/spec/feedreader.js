@@ -111,7 +111,7 @@ $(function() {
             loadFeed(0, done);
         });
 
-        it('contain at least one entry', function(done) {
+        it('contain at least one entry', function() {
             var entries = $(".feed .entry");
 
             expect(entries).toBeDefined();
