@@ -32,19 +32,14 @@ $(function() {
          * and that the URL is not empty.
          */
         it('have defined URLs', function() {
-            var url;
+            expect(allFeeds).toBeDefined();
 
-            if (allFeeds) {
-                allFeeds.forEach(function(feed) {
-                url = feed.url;
+            allFeeds.forEach(function(feed) {
+                var url = feed.url;
 
                 expect(url).toBeDefined();
                 expect(url).not.toBe('');
-                });
-            }
-            else {
-                window.alert("Jasmine: allFeeds not defined");
-            }
+            });
         });
 
 
@@ -55,16 +50,13 @@ $(function() {
         it('have defined names', function() {
             var name;
 
-            if (allFeeds) {
-                allFeeds.forEach(function(feed) {
-                    name = feed.name;
-                    expect(name).toBeDefined();
-                    expect(name).not.toBe('');
-                });
-            }
-            else {
-                window.alert("Jasmine: allFeeds not defined");
-            }
+            expect(allFeeds).toBeDefined();
+
+            allFeeds.forEach(function(feed) {
+                name = feed.name;
+                expect(name).toBeDefined();
+                expect(name).not.toBe('');
+            });
         });
     });
 
@@ -92,25 +84,17 @@ $(function() {
             var body = $("body");
             var isHidden;
 
+            expect(menuIcon).toBeDefined();
+
             menuIcon.click();
-            if (body) {
-                isHidden = body.hasClass("menu-hidden");
+            isHidden = body.hasClass("menu-hidden");
 
-                expect(isHidden).toBe(false);
+            expect(isHidden).toBe(false);
 
-                if (menuIcon) {
-                    menuIcon.click();
-                    isHidden = body.hasClass("menu-hidden");
+            menuIcon.click();
+            isHidden = body.hasClass("menu-hidden");
 
-                    expect(isHidden).toBe(true);
-                }
-                else {
-                    window.alert("Jasmine: menuIcon not defined");
-                }
-            }
-            else {
-                window.alert("Jasmine: body not defined");
-            }
+            expect(isHidden).toBe(true);
           });
     });
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -123,19 +107,16 @@ $(function() {
          */
         beforeEach(function(done) {
             loadFeed(0, function() {
-            done();
-           });
+                done();
+            });
         });
 
         it('contain at least one entry', function(done) {
             var feed = $(".feed");
             var entries = feed.children(".entry-link");
-            if (entries) {
-                expect(entries.length).not.toBe(0);
-            }
-            else {
-                window.alert("Jasmine: entries not defined");
-            }
+
+            expect(entriest).toBeDefined();
+            expect(entries.length).not.toBe(0);
             done();
         });
     });
@@ -158,12 +139,11 @@ $(function() {
 
         it('contains new content', function(done) {
             newEntry = $(".entry")[0];
-            if (newEntry && entry) {
-                expect(newEntry).not.toBe(entry);
-            }
-            else {
-                window.alert("Jasmine: entry not defined");
-            }
+
+            expect(entry).toBeDefined();
+            expect(newEntry).toBeDefined();
+            
+            expect(newEntry).not.toBe(entry);
             done();
         });
     });
