@@ -128,11 +128,11 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var entry, newEntry;
+        var feed, newFeed;
 
         beforeEach(function(done) {
             loadFeed(0, function() {
-                entry = $(".entry")[0];
+                feed = $(".feed").html();
                 loadFeed(1, function() {
                     done();
                 });
@@ -140,12 +140,12 @@ $(function() {
         });
 
         it('contains new content', function(done) {
-            newEntry = $(".entry")[0];
+            newFeed = $(".feed").html();
 
-            expect(entry).toBeDefined();
-            expect(newEntry).toBeDefined();
+            expect(feed).toBeDefined();
+            expect(newFeed).toBeDefined();
 
-            expect(newEntry).not.toBe(entry);
+            expect(newFeed).not.toBe(feed);
             done();
         });
     });
